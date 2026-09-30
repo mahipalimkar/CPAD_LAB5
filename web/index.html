@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dart DOM Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="main.dart.js"></script>
+</head>
+
+<body>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <main class="card">
+    <header class="top">
+      <span class="badge">Dart &middot; dart:html</span>
+      <span id="clock" class="clock">--:--:--</span>
+    </header>
+
+    <div class="hero">
+      <h1 id="title">Hello, DOM!</h1>
+      <p id="message">Open the Style Studio to change me.</p>
+    </div>
+
+    <div class="actions">
+      <button id="studioBtn" class="btn primary">Style Studio</button>
+      <button id="themeBtn" class="btn ghost">Toggle Dark Mode</button>
+      <button id="exportBtn" class="btn ghost">Export</button>
+      <label class="color-pick">Accent <input type="color" id="accentPick" value="#6366f1"></label>
+    </div>
+
+    <section id="studio" class="studio" hidden>
+      <div class="row">
+        <span class="lbl">Target</span>
+        <div class="seg" id="targetSeg">
+          <button class="chip active" data-target="title">Heading</button>
+          <button class="chip" data-target="message">Paragraph</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="lbl">Text</span>
+        <input id="textInput" type="text" autocomplete="off">
+      </div>
+
+      <div class="row">
+        <span class="lbl">Size</span>
+        <input id="sizeRange" type="range" min="12" max="64" value="37">
+        <output id="sizeVal">default</output>
+      </div>
+
+      <div class="row">
+        <span class="lbl">Spacing</span>
+        <input id="spacingRange" type="range" min="0" max="10" value="0">
+        <output id="spacingVal">0px</output>
+      </div>
+
+      <div class="row">
+        <span class="lbl">Font</span>
+        <select id="familySel">
+          <option value="">Default (Inter)</option>
+          <option value="Georgia, serif">Serif</option>
+          <option value="Consolas, monospace">Monospace</option>
+          <option value="'Segoe Script', cursive">Script</option>
+          <option value="Impact, sans-serif">Impact</option>
+        </select>
+        <span class="lbl">Colour</span>
+        <input id="textColor" type="color" value="#6366f1">
+      </div>
+
+      <div class="row">
+        <span class="lbl">Align</span>
+        <div class="seg" id="alignSeg">
+          <button class="chip" data-align="left">Left</button>
+          <button class="chip" data-align="center">Centre</button>
+          <button class="chip" data-align="right">Right</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="lbl">Style</span>
+        <div class="seg" id="togSeg">
+          <button class="chip" data-class="fmt-italic">Italic</button>
+          <button class="chip" data-class="fmt-underline">Underline</button>
+          <button class="chip" data-class="fmt-upper">Upper</button>
+          <button class="chip" data-class="hl">Highlight</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="lbl">Presets</span>
+        <div class="seg" id="presetSeg">
+          <button class="chip" data-preset="default">Default</button>
+          <button class="chip" data-preset="ocean">Ocean</button>
+          <button class="chip" data-preset="sunset">Sunset</button>
+          <button class="chip" data-preset="forest">Forest</button>
+          <button class="chip" data-preset="terminal">Terminal</button>
+        </div>
+        <button id="resetBtn" class="btn ghost small">Reset</button>
+      </div>
+
+      <pre id="cssOut"></pre>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><span id="totalCount">0</span><small>Total</small></div>
+      <div class="stat"><span id="doneCount">0</span><small>Completed</small></div>
+      <div class="stat"><span id="pendingCount">0</span><small>Pending</small></div>
+    </section>
+
+    <div class="progress">
+      <div id="bar"></div>
+    </div>
+
+    <div class="add-row">
+      <input id="taskInput" type="text" placeholder="Add a new task and press Enter" autocomplete="off">
+      <input id="dueInput" type="date">
+      <select id="prioritySel">
+        <option value="low">Low</option>
+        <option value="med" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button id="addBtn" class="btn primary">Add</button>
+    </div>
+
+    <div class="toolbar">
+      <input id="searchInput" type="search" placeholder="Search ( / )" autocomplete="off">
+      <div class="tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="active">Active</button>
+        <button class="tab" data-filter="done">Done</button>
+      </div>
+      <button id="clearBtn" class="btn ghost small">Clear done</button>
+    </div>
+
+    <ul id="list"></ul>
+    <p id="empty" class="empty">No tasks yet. Add your first one above.</p>
+
+    <footer id="status">Status: page loaded. Waiting for interaction.</footer>
+    <div id="toasts"></div>
+  </main>
+</body>
+
+</html>
